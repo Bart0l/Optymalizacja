@@ -1,4 +1,5 @@
 # Optymalizacja
+Projekt napisano w okresie: 2016_12
 
 Opis projektu
 
