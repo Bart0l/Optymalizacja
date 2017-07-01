@@ -1,0 +1,151 @@
+//Borzyszkowski_Bart³omiej
+//Code::Blocks IDE 16.01
+//=== TDM-GCC Compiler Suite for Windows ===
+//---           GCC 4.9 Series           ---
+//***   Standard MinGW 32-bit Edition    ***
+
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int K;
+const int MAX_TAB=50;
+int Tab[MAX_TAB][MAX_TAB];
+int TabJW [MAX_TAB];
+int s;
+int licznik;
+
+void Wprowadz_Sale (void)
+{
+    cout<<"Podaj liczbe wolnych sal: "<<endl;
+    cin>>s;
+    cout<<endl;
+}
+void Wprowadz_Nauczycieli (void)
+{
+    cout<<"Podaj liczbe nauczycieli: "<<endl;
+    cin>>K;
+    cout<<endl;
+}
+void Relacje (void)
+{
+    cout<<"Podaj relacje miedzy nauczycielami. "<<endl;
+    cout<<"Jesli nauczyciele moga przebywac w jednej sali wpisz 0, w przeciwnym wypadku wpisz 1:"<<endl<<endl;
+
+    for ( int i = 0; i <K; i++ ){
+        for ( int j=0; j <=i; j++ ){
+
+                 if (i==j){
+                 Tab[i][j]==0;
+                 continue;}
+
+            cout << "Nauczyciel nr " << (j+1) << " oraz nr " << (i+1) << ": ";
+            cin >> Tab[i][j];
+
+             if(Tab[i][j]==0){
+                Tab[j][i]=0;}
+            else {
+                Tab[j][i]=1;
+                }
+
+            if (Tab[i][j]==1 || Tab[i][j]==0){
+            cout<<"Zaleznosc poprawna."<<endl<<endl;}
+            else{
+            cout<<"Podaj liczbe 0 lub 1."<<endl<<endl;
+            j=j-1;}
+        }}
+}
+void Wyswietl_Relacje (void)
+{
+cout << "Tabela relacji miedzy nauczycielami: " << endl<<endl;
+cout << setw(6)<<" ";
+    for (int i=1; i<=K; i++)
+    {
+    cout << setw(7) << "N"<<i;
+    }
+    cout<<endl<<endl;
+
+    for ( int i = 0; i < K; i++ ){
+        cout<< endl << setw(4)<<"N"<<i+1;
+        for ( int j = 0; j < K; j++ ){
+                  if (Tab[i][j]==1)
+                     cout << setw(8)<<" x";
+                else cout << setw(8)<<" -";
+    }
+     cout << endl<<endl;
+    }
+}
+void Pary_Nauczycieli (void)
+{
+    cout<< "Pary nauczycieli, ktorzy nie moga odbierac projektow w tej samej sali: "<<endl;
+    for ( int i = 0; i < K; i++ ){
+        for ( int j = 0; j <=i; j++ ){
+                if (Tab[i][j]==1)
+                    cout << "N"<<j+1<<" i "<<"N"<<i+1<<endl;
+            }}
+             cout << endl;
+}
+void Rozmieszczenie (void)
+{
+        int x=1;
+        TabJW[0]=1;
+        for ( int i = 1; i <K; i++ ){
+        for ( int j=0; j <i; j++ ){
+                if (Tab[i][j]==0){
+                    TabJW[i]=x;}
+                else {
+                TabJW[i]=x+1;
+                i++;
+                x++; }
+                licznik=x;
+    }}
+}
+void Wyswietl_Rozmieszczenie (void)
+{
+    if (s<licznik){
+       cout<<"Twoja liczba dostepnych sal jest niewystarczajaca."<<endl;
+        cout<<"Do rozmieszczenia nauczycieli potrzeba minimum "<<licznik<<" sal."<<endl;}
+    else{
+    cout<<"Dopasowanie nauczycieli do poszczegolnych sal: "<<endl;
+    for ( int w = 0; w < K; w++ )
+        cout<<"n"<<w+1<<": Sala "<<TabJW[w]<<endl;
+        cout<< endl;
+        cout<<"Do rozmieszczenia nauczycieli potrzeba minimum "<<licznik<<" sal."<<endl;
+        cout<<"Posiadasz "<<s<<" sal do dyspozycji, dlatego nie ma problemu z rozmieszczeniem osob."<<endl;
+    }
+}
+void Przerywnik (void)
+{
+cout << setw(9)<< "---------------------------------------------------------------------------------------------------------------" << endl<<endl;
+}
+void Zakonczenie (void)
+{
+cout<<"Dziekuje za skorzystanie z programu!"<<endl;
+cout<<"~Bartek Borzyszkowski AiR ETI PG"<<endl;
+}
+int main()
+{
+    cout <<endl<< "Bartlomiej Borzyszkowski" << endl <<"Podstawy Programowania: Projekt 1." << endl << endl;
+    Przerywnik ();
+    cout << "Witaj Uzytkowniku!" << endl <<"Korzystasz z programu, ktory umozliwia rozplanowanie odbioru projektow z Podstaw Programowania na WETI." << endl;
+    cout << "Wpisz odpowiednie dane, aby dopasowac nauczycieli prowadzacych do odpowiednich sal egzaminacyjnych." << endl << endl;
+    Przerywnik ();
+    Wprowadz_Sale ();
+    Przerywnik ();
+    Wprowadz_Nauczycieli ();
+    Przerywnik ();
+    Relacje ();
+    Przerywnik ();
+    Wyswietl_Relacje ();
+    Przerywnik ();
+    Pary_Nauczycieli ();
+    Przerywnik ();
+    Rozmieszczenie ();
+    Wyswietl_Rozmieszczenie ();
+    Przerywnik ();
+    Zakonczenie ();
+
+    return 0;
+}
