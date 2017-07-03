@@ -15,4 +15,6 @@ c) Wyświetlenie relacji między nauczycielami w formie tabeli ('x' jeśli nie m
 
 d) Wyznaczenie minimalnej liczby sal do przeprowadzenia odbioru projektów. 
 
-e) Wprowadzenie liczby sal oraz wyznaczenie przydziału nauczycieli do danych sal. f) Wyświetlenie sposobu ulokowania nauczycieli w salach.
+e) Wprowadzenie liczby sal oraz wyznaczenie przydziału nauczycieli do danych sal. 
+
+f) Wyświetlenie sposobu ulokowania nauczycieli w salach.
